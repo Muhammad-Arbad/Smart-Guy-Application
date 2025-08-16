@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:smart_guy/widgets/custom_expansion_tile.dart';
 import 'package:smart_guy/widgets/greeting_text_container.dart';
@@ -6,15 +8,16 @@ import '../widgets/custom_chat_avatar.dart';
 import '../widgets/custom_chat_options.dart';
 import '../widgets/typing_dots.dart';
 
-class Chat extends StatefulWidget {
-  const Chat({super.key});
+class ChatScreen extends StatefulWidget {
+
+  const ChatScreen({super.key, });
 
   @override
-  State<Chat> createState() => _ChatState();
+  State<ChatScreen> createState() => ChatScreenState();
 }
 
-class _ChatState extends State<Chat> {
-  final ScrollController _scrollController = ScrollController();
+class ChatScreenState extends State<ChatScreen> {
+  final ScrollController scrollController = ScrollController();
 
   final List<ChatStep> _chatFlow = [
     ChatStep(
@@ -22,9 +25,11 @@ class _ChatState extends State<Chat> {
       options: [
         'Personal/Spiritual',
         'Health/Wellness',
+
+        'Relationships',
+        'Career',
+        'Life Skills',
         'Legends',
-        'Relationships/Life',
-        'Work/Explore',
       ],
     ),
     ChatStep(
@@ -62,6 +67,42 @@ class _ChatState extends State<Chat> {
     ),
   ];
 
+  void functionFromGlobalKeyCalling({String? id}) async {
+    log("Chat Screen shown");
+
+    _selectedOptionPerStep.clear();
+    _chatWidgets.clear();
+    _isLoading = true;
+    setState(() {});
+
+
+
+    if (id != null) {
+      // Pre-select first option
+      _selectedOptionPerStep[0] = id;
+      _chatWidgets = _buildChatWidgetsUpToStep(0);
+      setState(() { _isLoading = true; });
+
+      Future.delayed(const Duration(seconds: 1), () {
+        setState(() { _isLoading = false; });
+        _addStepToChat(1);
+      });
+    } else {
+      // Normal fresh chat
+      _isLoading = false;
+      _addStepToChat(0);
+    }
+  }
+
+  void resetChat() {
+    _selectedOptionPerStep.clear();
+    _chatWidgets.clear();
+    _isLoading = false;
+    setState(() {});
+    _addStepToChat(0);
+  }
+
+
  final Map<int, String> _selectedOptionPerStep = {};
   List<Widget> _chatWidgets = [];
   bool _isLoading = false;
@@ -69,13 +110,15 @@ class _ChatState extends State<Chat> {
   @override
   void initState() {
     super.initState();
-    _addStepToChat(0);
+      _addStepToChat(0);
+
   }
+
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      controller: _scrollController,
+      controller: scrollController,
       physics: BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,9 +134,9 @@ class _ChatState extends State<Chat> {
 
   void _scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
+      if (scrollController.hasClients) {
+        scrollController.animateTo(
+          scrollController.position.maxScrollExtent,
           duration: const Duration(seconds: 1),
           curve: Curves.easeOut,
         );
@@ -148,14 +191,7 @@ class _ChatState extends State<Chat> {
           ),
         );
       }
-      // else{
-      //   widgets.add(
-      //   CustomExpansionTile(
-      //     title:"🌿 Reflection on Humility",
-      //     expandedTitle: "True humility is not about thinking less of yourself, but thinking of yourself less. It’s about recognizing your strengths while remaining open to growth, correction, and the value others bring. A humble heart listens more than it speaks, learns more than it boasts, and leads by example rather than ego.",
-      //   ),
-      //   );
-      // }
+
     }
     return widgets;
   }

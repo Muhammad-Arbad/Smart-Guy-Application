@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_guy/constants/consts.dart';
+import 'package:smart_guy/utils/providers.dart';
+
+import '../utils/page_navigation.dart';
+import '../views/chat.dart';
 class GridCard extends StatelessWidget {
  final String title;
  final String imagePath;
@@ -11,7 +16,8 @@ class GridCard extends StatelessWidget {
 
       GestureDetector(
         onTap: (){
-
+          Provider.of<OurProviderClass>(context,listen: false).changeCurrentIndex(1);
+          (chatScreenKey.currentState as ChatScreenState?)?.functionFromGlobalKeyCalling(id:title);
         },
         child: Container(
          padding: EdgeInsets.only(left:8,right: 8),

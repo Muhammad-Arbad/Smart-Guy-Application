@@ -3,9 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:smart_guy/utils/providers.dart';
 
 import 'package:provider/provider.dart';
+import 'package:smart_guy/utils/shared_preferences.dart';
 import 'package:smart_guy/views/splash_screen.dart';
 
-void main() {
+import 'constants/consts.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppSharedPreferences.init();
   runApp(
     ChangeNotifierProvider(
       create: (_) => OurProviderClass(),
@@ -24,12 +29,7 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-   //final isDark = Provider.of<OurProviderClass>(context).isDarkMode;
 
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-     // statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-    ));
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
@@ -39,6 +39,22 @@ class MyApp extends StatelessWidget {
         fontFamily: "Figtree",
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF053B9D)),
         useMaterial3: true,
+        // appBarTheme: AppBarTheme(
+        //   backgroundColor: isDark ? CustomAppColors.blackColor.withValues(alpha: 0.8) : CustomAppColors.whiteColor.withValues(alpha: 0.8),
+        // ),
+        // drawerTheme: DrawerThemeData(
+        //   backgroundColor: isDark ? CustomAppColors.darkScaffoldColor : CustomAppColors.darkScaffoldSecondColor,
+        // ),
+        //
+        // bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        //   backgroundColor:isDark ? CustomAppColors.blackColor.withValues(alpha: 0.8) : CustomAppColors.whiteColor,
+        // ),
+        //
+        // scaffoldBackgroundColor: isDark ? CustomAppColors.darkScaffoldColor : CustomAppColors.lightScaffoldColor,
+        //
+        // textSelectionTheme: TextSelectionThemeData(
+        //     selectionHandleColor: CustomAppColors.primaryColor
+        // ),
       ),
       home: SplashScreen(),
       // home:Abc(),

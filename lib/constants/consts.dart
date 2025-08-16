@@ -6,6 +6,21 @@ import 'package:smart_guy/views/bookmark.dart';
 import 'package:smart_guy/views/dashboard.dart';
 import 'package:smart_guy/views/profile.dart';
 import 'package:smart_guy/views/chat.dart';
+
+import '../utils/shared_preferences.dart';
+
+final GlobalKey<State<ChatScreen>> chatScreenKey = GlobalKey<State<ChatScreen>>();
+
+
+class AppScreens {
+  static final screens = [
+    const Dashboard(),
+    ChatScreen(key: chatScreenKey,),
+    Bookmark(),
+    const Profile(),
+
+  ];
+}
 class ConstStrings{
   static const String figtreeFont="Figtree";
   static const String hyUser="Hey, Welcome Back   👋 ";
@@ -16,14 +31,30 @@ class ConstStrings{
 
 class CustomAppColors {
   static const Color whiteColor = Colors.white;
+  static const Color blackColor = Colors.black;
+
+  static Color darkScaffoldColor = Color(0xFF2C2C2C);
+  static Color darkScaffoldSecondColor = Color(0xFFf7f3ed);
+  static Color lightScaffoldColor = Color(0xFFFFEEDE);
+  static Color primaryColor = Color(int.parse(AppSharedPreferences.getPrimaryColor()));
+  static Color secondaryColor = Color(int.parse(AppSharedPreferences.getSecondaryColor()));
+  static Color darkLightTextColor = AppSharedPreferences.getIsDarkMode()!?whiteColor:blackColor;
+
+  static Color darkColorOnDarkAndLightColorOnLight = AppSharedPreferences.getIsDarkMode()!? blackColor:whiteColor;
+
+
   static const Color bodyColor = Color(0xFFF7FAFC);
   static final Color greyColor = Color(0xFF333333);
-  static const Color primaryColor = Color(0xFF053B9D);
+  // static const Color primaryColor = Color(0xFF053B9D);
   static const Color bglinear = Color(0XFF678CCD);
   static const Color textlabelColor = Color(0XFF776F69);
   static final Color grayBorderClr = Color(0xFFE0E0E0);
   static final Color chatoptionbg = Color(0xFFCCDEFF);
   static const Color errorBackgroundColor = Colors.red;
+  static void updatePrimColor() {
+    darkLightTextColor = AppSharedPreferences.getIsDarkMode()!?Colors.white:Colors.black;
+    darkColorOnDarkAndLightColorOnLight = AppSharedPreferences.getIsDarkMode()!?Colors.black:Colors.white;
+  }
 }
 
 class CustomTextStyles {
@@ -120,17 +151,11 @@ class CustomTextStyles {
     fontWeight: FontWeight.w500,
     color: CustomAppColors.greyColor,
   );
+
+
 }
 
-class AppScreens {
-  static final screens = [
-    const Dashboard(),
-    const Chat(),
-     Bookmark(),
-    const Profile(),
 
-  ];
-}
 
 class AppBarData {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -204,4 +229,5 @@ class AppNavigationItems {
     ),
 
   ];
+
 }

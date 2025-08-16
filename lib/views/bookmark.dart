@@ -12,11 +12,11 @@ class Bookmark extends StatefulWidget {
 class _BookmarkPageState extends State<Bookmark> {
   // List of YouTube video URLs
   final List<String> videoUrls = [
-    'https://www.youtube.com/watch?v=K18cpp_-gP8',
-    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    'https://www.youtube.com/watch?v=FTQbiNvZqaY',
-    'https://www.youtube.com/watch?v=5O_sppoHLgA&list=RD5O_sppoHLgA&start_radio=1',
-    'https://www.youtube.com/watch?v=1cgyibE5xG0'
+    'https://www.youtube.com/watch?v=2jsaXyRkvaY',
+    'https://www.youtube.com/watch?v=-XJYf6S5SPA',
+    'https://www.youtube.com/watch?v=cn_jNosW58E',
+    'https://www.youtube.com/watch?v=A_oI_-1pDDE',
+    'https://www.youtube.com/watch?v=CaRM0FRBCc4'
   ];
 
   // Convert URL to video ID
@@ -43,14 +43,15 @@ class _BookmarkPageState extends State<Bookmark> {
             child: YoutubePlayer(
               controller: _controller,
               showVideoProgressIndicator: true,
-              progressIndicatorColor: Colors.blue,
+              progressIndicatorColor: CustomAppColors.primaryColor,
+
               bottomActions: [
                 const SizedBox(width: 10),
                 CurrentPosition(),
                 const SizedBox(width: 10),
                 ProgressBar(isExpanded: true),
                 const SizedBox(width: 10),
-                FullScreenButton(),
+                // FullScreenButton(),
               ],
             ),
           ),
@@ -61,7 +62,7 @@ class _BookmarkPageState extends State<Bookmark> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+
 
     return
 
@@ -75,17 +76,18 @@ class _BookmarkPageState extends State<Bookmark> {
               padding: const EdgeInsets.symmetric(vertical: 10),
               itemCount: videoUrls.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: width < 600 ? 2 : 4, // Responsive grid
+                crossAxisCount:  2 , // Responsive grid
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
                 childAspectRatio: 16/9,
+
               ),
               itemBuilder: (context, index) {
                 String? videoId = _getVideoId(videoUrls[index]);
                 if (videoId == null) return const SizedBox();
 
                 // Try to get the highest resolution thumbnail first
-                String thumbnailUrl = 'https://img.youtube.com/vi/$videoId/maxresdefault.jpg';
+                String thumbnailUrl = 'https://img.youtube.com/vi/$videoId/0.jpg';
 
                 return GestureDetector(
                   onTap: () => _openPlayer(context, videoId),
@@ -98,8 +100,8 @@ class _BookmarkPageState extends State<Bookmark> {
                           Positioned.fill(
                             child: Image.network(
                               thumbnailUrl,
-                              fit: BoxFit.cover, // Try BoxFit.cover (for crop), or:
-                              alignment: Alignment.topCenter, // Optionally adjust alignment
+                              fit: BoxFit.cover,
+
                               errorBuilder: (context, error, stackTrace) => Container(
                                 color: Colors.grey[300],
                                 child: Center(child: Icon(Icons.broken_image)),

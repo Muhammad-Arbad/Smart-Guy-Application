@@ -18,7 +18,7 @@ class CircularIconBtn extends StatelessWidget {
         margin: const EdgeInsets.only(left: 16),
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: Color(0xFFF7FAFC),
+          color:Color(0xFFF7FAFC),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

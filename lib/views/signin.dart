@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'dart:io';
+
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,8 +10,10 @@ import 'package:smart_guy/widgets/custom_text_form_field.dart';
 import 'package:smart_guy/widgets/scaffold_first.dart';
 
 import '../controller/signin_CTR.dart';
+import '../utils/page_navigation.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_circular_progress.dart';
+import '../widgets/scaffold_second.dart';
 import 'blur_effect.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -28,43 +32,7 @@ class _LoginScreenState extends State<SignInScreen> {
 
   void signInButtonPress() async {
     FocusScope.of(context).requestFocus(FocusNode());
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (formKey.currentState!.validate()) {
-
-        setState(() {
-          isLoading = true;
-        });
-        log("------------------------------------------");
-        log('prefs ${prefs}');
-        bool res = await SignInController(
-
-            rollNo: int.parse('1257'),
-            password: _password.text,
-            prefs :prefs,
-          // schoolDropDownListModel: schoolDropDownListModel!)
-        )
-            .signIn(context);
-        if (!res) {
-          setState(() {
-            isLoading = false;
-          });
-
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: CustomAppColors.errorBackgroundColor,
-            // behavior: SnackBarBehavior.floating,
-            content: Align(
-              alignment: Alignment.topCenter,
-              child: Text("Invalid Email or Password "),
-            ),
-          ));
-
-      }
-
-      // log("message1");
-    }
-    // else {
-    //   log("message2");
-    // }
+    ScreenNavigationSlide.navigateReplacement(context,const ScaffoldSecond());
   }
   @override
   Widget build(BuildContext context) {
@@ -143,7 +111,7 @@ class _LoginScreenState extends State<SignInScreen> {
                       child:CustomTextButton(onPressed: ()=>{}, title:'Forget Password?',textcolor: Color( 0xFF4F4F4F))
 
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 28),
 
                   CustomButtonWithWithoutIcon(
                     text: 'Login',
@@ -151,9 +119,9 @@ class _LoginScreenState extends State<SignInScreen> {
                     onPressed: signInButtonPress,
                   ),
 
-                  SizedBox(height: 10),
+                  SizedBox(height: 28),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                     child: Row(
                       children: [
                         Expanded(child: Divider(endIndent: 20,)),
@@ -164,17 +132,18 @@ class _LoginScreenState extends State<SignInScreen> {
                           style: TextStyle(color: Colors.grey),
 
                         ),
-                        Expanded(child: Divider(indent: 10,)),
+                        Expanded(child: Divider(indent: 20,)),
                       ],
                     ),
                   ),
-
+                  SizedBox(height: 16),
+                  Platform.isAndroid?
                   CustomButtonWithWithoutIcon(
                     onPressed: ()=>{},
                     text: "Continue With Google",
                     imagePath: "assets/images/google.png",
-                    bgColor: Color(0XFFEFEEEC),),
-                  SizedBox(height: 8),
+                    bgColor: Color(0XFFEFEEEC),):
+
                   CustomButtonWithWithoutIcon(
                     onPressed: ()=>{},
                     text: "Continue With Apple",

@@ -101,19 +101,19 @@ class _SplashScreenState extends State<SplashScreen>
     // AppSharedPreferences.setBioPopupValue(false);
 
     if (await checkInternet()) {
-
-final String? alreadylogin = prefs.getString("token");
-log(alreadylogin??'ufuiyreyfe78ryery8');
-      await Future.delayed(Duration(seconds: 2));
-      if(alreadylogin!.isNotEmpty){
-        ScreenNavigationSlide.navigateReplacement(context, const ScaffoldSecond());
-      }
-      else {
+//
+// final String? alreadylogin = prefs.getString("token");
+// log(alreadylogin??'ufuiyreyfe78ryery8');
+//       await Future.delayed(Duration(seconds: 2));
+//       if(alreadylogin!.isNotEmpty){
+//         ScreenNavigationSlide.navigateReplacement(context, const ScaffoldSecond());
+//       }
+//       else {
         if (mounted) {
           ScreenNavigationSlide.navigateReplacement(
               context, const SignInScreen());
         }
-      }
+      // }
 
 
       // if (AppSharedPreferences.getUserToken() != '' &&

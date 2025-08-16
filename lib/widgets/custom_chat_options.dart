@@ -33,7 +33,7 @@ class customChatboxoptions extends StatelessWidget {
                     : CustomAppColors.whiteColor,
                 borderRadius: BorderRadius.circular(25),
                 border: isSelected
-                    ? null
+                    ? Border.all(color:CustomAppColors.chatoptionbg)
                     : Border.all(color: CustomAppColors.primaryColor),
               ),
               child: Text(

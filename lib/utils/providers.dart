@@ -1,91 +1,35 @@
-
 import 'package:flutter/material.dart';
+import 'package:smart_guy/utils/shared_preferences.dart';
 
+import '../constants/consts.dart';
+import '../views/chat.dart';
 
-class OurProviderClass extends ChangeNotifier{
+class OurProviderClass extends ChangeNotifier {
+  int currentIndex=0;
+  bool isDarkMode = AppSharedPreferences.getIsDarkMode()!;
 
-  int count = 0;
-
-  String pageTitle='';
-  bool blurEffectFirst = false;
-  bool blurEffectSecond = false;
-  bool blurEffectSecondOnBody = false;
-
-
-
-  String selectedSessionId="";
-
-
-  int get getIndex{
-    return count;
+  bool get getDarkMode {
+    return isDarkMode;
+  }
+  int get getCurrentIndex{
+    return currentIndex;
   }
 
+  void changeCurrentIndex(int index){
+    if (currentIndex == 1 && index != 1) {
 
+      (chatScreenKey.currentState as ChatScreenState?)?.resetChat();
+    }
+    currentIndex= index;
+    notifyListeners();
+}
 
-
-  String get getPageTitle{
-    return pageTitle;
-  }
-
-
-  bool get getBlurEffectFirst{
-    return blurEffectFirst;
-  }
-
-  bool get getBlurEffectSecond{
-    return blurEffectSecond;
-  }
-
-  bool get getBlurEffectSecondOnBody{
-    return blurEffectSecondOnBody;
-  }
-
-
-  String get getChatSession{
-    return selectedSessionId;
-  }
-
-
-
-
-  void changeSelectedChatSession(String id) {
-    selectedSessionId = id;
+  void changeAppThemeMode(bool mode) {
+    isDarkMode = mode;
     notifyListeners();
   }
 
-
-
-
-
-  void changeBottomNavBarIndex(int index,String pageTitle){
-    count = index;
-    this.pageTitle=pageTitle;
+  void onlyChangeNotifier() {
     notifyListeners();
   }
-
-
-  void showBlurEffectFirst(bool blur){
-    blurEffectFirst = blur;
-    notifyListeners();
-  }
-
-
-
-  void showBlurEffectSecond(bool blur){
-    blurEffectSecond = blur;
-    notifyListeners();
-  }
-
-  void showBlurEffectSecondOnBody(bool blur){
-    blurEffectSecondOnBody = blur;
-    notifyListeners();
-  }
-
-
-  void onlyChangeNotifier(){
-    notifyListeners();
-  }
-
-
-
 }
