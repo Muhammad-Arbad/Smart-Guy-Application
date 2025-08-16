@@ -30,12 +30,13 @@ class _ProfileState extends State<Profile> {
           SizedBox(height: 2),
           Text(
             "Advisify",
-            style: CustomTextSytles.greytitlefont20,
+
+            style: CustomTextStyles.greytitlefont20,
           ),
           SizedBox(height: 3),
           Text(
             "Hussnain",
-            style: CustomTextSytles.textlfieldlabeltext.copyWith(
+            style: CustomTextStyles.textlfieldlabeltext.copyWith(
               color:CustomAppColors.primaryColor
             )
           ),

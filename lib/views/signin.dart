@@ -92,7 +92,7 @@ class _LoginScreenState extends State<SignInScreen> {
                   SizedBox(height: 4,),
                   Text(
                     "Login to your accout",
-                    style: CustomTextSytles.black28.copyWith(
+                    style: CustomTextStyles.black28.copyWith(
                         height: 0.5
                     ),
                   ),
@@ -100,7 +100,7 @@ class _LoginScreenState extends State<SignInScreen> {
                     children: [
                       Text(
                           "Dont have an acocunt",
-                          style:CustomTextSytles.grey12manrope.copyWith(
+                          style:CustomTextStyles.grey12manrope.copyWith(
                             fontSize: 16,
 
                           )

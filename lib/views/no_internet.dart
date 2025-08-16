@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_guy/views/splash.dart';
+import 'package:smart_guy/views/splash_screen.dart';
 
 import 'package:smart_guy/widgets/scaffold_first.dart';
 

@@ -66,7 +66,7 @@ class CustomDrawer extends StatelessWidget {
                                 Expanded(
                                   child: Text(
                                     item.label,
-                                    style: CustomTextSytles.white16,
+                                    style: CustomTextStyles.white16,
                                     textAlign: TextAlign.center,
 
                                   ),

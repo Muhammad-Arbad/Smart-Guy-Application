@@ -14,7 +14,7 @@ class GridCard extends StatelessWidget {
 
         },
         child: Container(
-         padding: EdgeInsets.only(left:4),
+         padding: EdgeInsets.only(left:8,right: 8),
 
           decoration: BoxDecoration(
             color: Colors.white,
@@ -29,8 +29,9 @@ class GridCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  textAlign: TextAlign.left,
-                  style:CustomTextSytles.griditemfont,
+
+                  overflow: TextOverflow.ellipsis,
+                  style:CustomTextStyles.card16Gryw700,
 
                 ),
               ),

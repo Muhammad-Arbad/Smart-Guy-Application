@@ -36,7 +36,7 @@ class CustomExpansionTile extends StatelessWidget {
         // tilePadding: tilePadding,
         title: Text(
           title,
-          style: CustomTextSytles.expansiontitle.copyWith(
+          style: CustomTextStyles.expansiontitle.copyWith(
               fontWeight: FontWeight.bold
           ),
         ),
@@ -45,7 +45,7 @@ class CustomExpansionTile extends StatelessWidget {
             padding: contentPadding!,
             child: Text(
               expandedTitle,
-              style: CustomTextSytles.expansiontitle.copyWith(
+              style: CustomTextStyles.expansiontitle.copyWith(
                   letterSpacing: 0.3
               ), // Add this to your consts.dart
             ),

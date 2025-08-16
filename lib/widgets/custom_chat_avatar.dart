@@ -18,7 +18,7 @@ class CustomChatboxavatar extends StatelessWidget {
             child: Text(
                 'SG',
                 textAlign: TextAlign.center,
-                style: CustomTextSytles.primaryfont18.copyWith(fontWeight: FontWeight.normal),
+                style: CustomTextStyles.subtitle20primaryw700,
               ),
 
           ),
@@ -32,7 +32,7 @@ class CustomChatboxavatar extends StatelessWidget {
               ),
               child: Text(
                 text,
-                style: CustomTextSytles.chatboxtext,
+                style: CustomTextStyles.chtboxtxt14Gry500,
               ),
             ),
           ),

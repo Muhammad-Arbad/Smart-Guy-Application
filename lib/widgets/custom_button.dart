@@ -59,7 +59,7 @@ class CustomButtonWithWithoutIcon extends StatelessWidget {
             const SizedBox(width: 20),
             Text(
               text,
-              style: CustomTextSytles.white16.copyWith(
+              style: CustomTextStyles.white16.copyWith(
                 fontWeight: FontWeight.w600,
                 color: textColor ?? Colors.black,
               ),
@@ -68,7 +68,7 @@ class CustomButtonWithWithoutIcon extends StatelessWidget {
         )
             : Text(
           text,
-          style: CustomTextSytles.white16.copyWith(
+          style: CustomTextStyles.white16.copyWith(
             fontWeight: FontWeight.bold,
             color: textColor ?? Colors.white,
           ),

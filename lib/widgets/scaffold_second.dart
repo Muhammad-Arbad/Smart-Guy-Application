@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:smart_guy/constants/appbar_data.dart';
 import 'package:smart_guy/constants/consts.dart';
 
 import 'package:smart_guy/widgets/bottom_nav_bar.dart';
 import 'package:smart_guy/widgets/custom_drawer.dart';
+
+import '../utils/providers.dart';
 
 
 
@@ -38,7 +40,7 @@ class _ScaffoldSecondState extends State<ScaffoldSecond> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: CustomAppColors.bodyColor,
-      //--------------------------AppBar 😊
+      //--------------------------AppBar  ✔
       appBar: AppBar(
         toolbarHeight: kToolbarHeight+10,
         bottomOpacity: 0.5,
@@ -46,12 +48,12 @@ class _ScaffoldSecondState extends State<ScaffoldSecond> {
         elevation: 0,
 
         scrolledUnderElevation: 0,
-        title: Text(appBarData.appBarTitles[_currentIndex], style: CustomTextSytles.title),
+        title: Text(appBarData.appBarTitles[_currentIndex], style: CustomTextStyles.title18blackBold),
         leading: appBarData.getLeadingWidgets()[_currentIndex],
         actions: appBarData.appBarActions[_currentIndex],
         centerTitle: true,
       ),
-      //---------------------------Drawer😒
+      //---------------------------Drawer  ✔
       
       drawer: isDrawerVisible ? CustomDrawer(
         currentIndex: _currentIndex,
@@ -61,7 +63,7 @@ class _ScaffoldSecondState extends State<ScaffoldSecond> {
           });
         },
       ) : null,
-      //---------------------------Body😒
+      //---------------------------Body   ✔
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 20,20,0),
         child: widget.body ?? IndexedStack(
@@ -69,10 +71,14 @@ class _ScaffoldSecondState extends State<ScaffoldSecond> {
           children:AppScreens.screens,
         ),
       ),
-      //---------------------------BottomNav😒
+      //---------------------------BottomNav   ✔
       bottomNavigationBar: CustomBottomNavBar(
         index: _currentIndex,
-        ontap: (index) => setState(() => _currentIndex = index),
+        ontap: (index) =>{
+        FocusScope.of(context).unfocus(),
+          setState(() => _currentIndex = index),
+
+        },
       ),
     );
   }

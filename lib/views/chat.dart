@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_guy/widgets/custom_expansion_tile.dart';
-import 'package:smart_guy/widgets/greeting_text_col.dart';
+import 'package:smart_guy/widgets/greeting_text_container.dart';
 import '../models/chat_steps.dart';
 import '../widgets/custom_chat_avatar.dart';
 import '../widgets/custom_chat_options.dart';

@@ -13,14 +13,14 @@ class GreetingTextColumn extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Hey, Welcome Back   👋 ",
-            style: CustomTextSytles.pagetitle
+            ConstStrings.hyUser,
+            style: CustomTextStyles.pagetitle16Bold700
 
           ),
           const SizedBox(height: 4),
           Text(
-            "Get Smart. Become Unstoppable!",
-            style: CustomTextSytles.primaryfont18,
+            ConstStrings.smartIntro,
+            style: CustomTextStyles.subtitle20primaryw700,
 
           ),
 
@@ -28,8 +28,8 @@ class GreetingTextColumn extends StatelessWidget {
             const SizedBox(height:10),
             Text(
                 "Which area would you like to explore today?",
-                style: CustomTextSytles.greytextfont14.copyWith(
-                    fontWeight: FontWeight.w700
+                style: CustomTextStyles.pagetitle16Bold700.copyWith(
+                  color: CustomAppColors.greyColor
                 )
 
             ),

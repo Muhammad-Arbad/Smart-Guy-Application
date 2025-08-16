@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_guy/widgets/greeting_text_col.dart';
+import 'package:smart_guy/widgets/greeting_text_container.dart';
 
 import '../models/grid_item.dart';
 import '../widgets/grid_card.dart';

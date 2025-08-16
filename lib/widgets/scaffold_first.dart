@@ -58,19 +58,19 @@ class _ScaffoldFirstState extends State<ScaffoldFirst> {
                      child: RichText(
                        textAlign: TextAlign.center,
                        text: TextSpan(
-                         style: CustomTextSytles.grey12manrope.copyWith(height: 1.5),
+                         style: CustomTextStyles.grey12manrope.copyWith(height: 1.5),
                          children: [
                            TextSpan(text: "By continuing, you agree to our\n "),
                            TextSpan(
                              text: "User Agreement",
-                             style: CustomTextSytles.grey12manrope.copyWith(
+                             style: CustomTextStyles.grey12manrope.copyWith(
                                color: Colors.black,
                              ),
                            ),
                            TextSpan(text: " and "),
                            TextSpan(
                              text: "Privacy Policy",
-                             style: CustomTextSytles.grey12manrope.copyWith(
+                             style: CustomTextStyles.grey12manrope.copyWith(
                                color: Colors.black,
                              ),
                            ),

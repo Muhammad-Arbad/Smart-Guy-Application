@@ -68,7 +68,7 @@ class _BookmarkPageState extends State<Bookmark> {
        Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Your Bookmarked Videos", style: CustomTextSytles.pagetitle),
+          Text("Your Bookmarked Videos", style: CustomTextStyles.pagetitle16Bold700),
 
           Expanded(
             child: GridView.builder(

@@ -38,10 +38,10 @@ class customChatboxoptions extends StatelessWidget {
               ),
               child: Text(
                 items[index],
-                style: CustomTextSytles.chatboxoption.copyWith(
+                style: CustomTextStyles.chatboxoption.copyWith(
                   color: isSelected
                       ? CustomAppColors.primaryColor
-                      : CustomTextSytles.chatboxoption.color,
+                      : CustomTextStyles.chatboxoption.color,
                 ),
               ),
             ),

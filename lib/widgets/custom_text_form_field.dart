@@ -99,7 +99,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
           if (widget.title.isNotEmpty) ...[
             Text(
               widget.title,
-              style: CustomTextSytles.greytextfont14,
+              style: CustomTextStyles.greytextfont14,
             ),
             const SizedBox(height: 6.0),
           ],
@@ -122,7 +122,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
             decoration: InputDecoration(
               label: Text(
                 widget.label,
-                style: CustomTextSytles.textlfieldlabeltext,
+                style: CustomTextStyles.textlfieldlabeltext,
               ),
               floatingLabelBehavior: FloatingLabelBehavior.never,
               contentPadding: const EdgeInsets.symmetric(
