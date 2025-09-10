@@ -45,7 +45,9 @@ class _ScaffoldSecondState extends State<ScaffoldSecond> {
   Widget build(BuildContext context) {
     final int currentIndex =
         Provider.of<OurProviderClass>(context, listen: true).getCurrentIndex;
-    return Scaffold(
+    return
+
+      Scaffold(
       key: _scaffoldKey,
       // backgroundColor: CustomAppColors.darkScaffoldSecondColor,
       backgroundColor: CustomAppColors.bodyColor,

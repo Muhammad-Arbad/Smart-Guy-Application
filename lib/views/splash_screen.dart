@@ -104,7 +104,7 @@ class _SplashScreenState extends State<SplashScreen>
 //
 // final String? alreadylogin = prefs.getString("token");
 // log(alreadylogin??'ufuiyreyfe78ryery8');
-//       await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 2));
 //       if(alreadylogin!.isNotEmpty){
 //         ScreenNavigationSlide.navigateReplacement(context, const ScaffoldSecond());
 //       }

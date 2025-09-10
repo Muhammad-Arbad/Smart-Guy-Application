@@ -6,7 +6,8 @@ import '../views/chat.dart';
 
 class OurProviderClass extends ChangeNotifier {
   int currentIndex=0;
-  bool isDarkMode = AppSharedPreferences.getIsDarkMode()!;
+  // bool isDarkMode = AppSharedPreferences.getIsDarkMode()??false;
+  bool isDarkMode = false;
 
   bool get getDarkMode {
     return isDarkMode;
